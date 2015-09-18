@@ -1,6 +1,9 @@
 {
-    "name": "appmarket",
-    "version": "0.0.1",
-    "description": "Simulacro de página de market desarrollada en AngularJS.",
-    "dependencies": {}
+  "name": "appmarket",
+  "version": "0.0.1",
+  "description": "Simulacro de página de market desarrollada en AngularJS.",
+  "dependencies": {
+    "angular": "~1.4.6",
+    "bootstrap": "~3.3.5"
+  }
 }
