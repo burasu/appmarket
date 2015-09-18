@@ -97,7 +97,7 @@ gulp.task('templates', function() {
     gulp.src('./app/views/**/*.html')
         .pipe(templateCache({
             root: 'views/',
-            module: 'blog.templates',
+            module: 'AppMarketApp.templates',
             standalone: true
         }))
         .pipe(gulp.dest('./app/scripts'));
@@ -117,7 +117,7 @@ gulp.task('compress', function() {
 gulp.task('uncss', function() {
     gulp.src('./dist/css/style.min.css')
         .pipe(uncss({
-            html: ['./app/index.html', './app/views/post-detail.tpl.html', './app/views/post-list.tpl.html']
+            html: ['./app/index.html', './app/views/appInfo.html', './app/views/installApp.html']
         }))
         .pipe(gulp.dest('./dist/css'));
 });
@@ -128,8 +128,9 @@ gulp.task('copy', function() {
     gulp.src('./app/index.html')
         .pipe(useref())
         .pipe(gulp.dest('./dist'));
-    gulp.src('./app/lib/font-awesome/fonts/**')
-        .pipe(gulp.dest('./dist/fonts'));
+    gulp.src('./app/img/*')
+        .pipe(useref())
+        .pipe(gulp.dest('./dist/img'));
 });
 
 // Vigila cambios que se produzcan en el código
@@ -142,5 +143,4 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['server', 'templates', 'inject', 'wiredep', 'watch']);
-//gulp.task('default', ['server']);
 gulp.task('build', ['templates', 'compress', 'copy', 'uncss']);
